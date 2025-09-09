@@ -21,7 +21,7 @@ test('create account returns 201 and create an account successfully', async () =
 
   const response = await request(server.server)
     .post(`/accounts`)
-    .set('Contente-Type', 'application/json')
+    .set('Content-Type', 'application/json')
     .send({ email: generatedEmail, name: generatedName })
 
   expect(response.status).toEqual(201)
@@ -44,7 +44,7 @@ test('create account returns 401 if the email provided is already taken', async 
 
   const response = await request(server.server)
     .post(`/accounts`)
-    .set('Contente-Type', 'application/json')
+    .set('Content-Type', 'application/json')
     .send({ email: generatedEmail, name: generatedName })
 
   expect(response.status).toEqual(409)
@@ -67,7 +67,7 @@ test('create account returns 500 if sendEmail function throws an error', async (
 
   const response = await request(server.server)
     .post(`/accounts`)
-    .set('Contente-Type', 'application/json')
+    .set('Content-Type', 'application/json')
     .send({ email: generatedEmail, name: generatedName })
 
   expect(response.status).toEqual(500)

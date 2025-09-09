@@ -68,8 +68,6 @@ export const askAiRoute: FastifyPluginAsyncZod  = async (server) => {
           answer: z.string()
         }),
         maxOutputTokens: tokens
-        // tools: analyticsToolSet,
-        // maxSteps: 5
       });
 
       result.usage
@@ -77,7 +75,6 @@ export const askAiRoute: FastifyPluginAsyncZod  = async (server) => {
           const newAmountOfTokens = res.outputTokens
             ? Math.max(0, tokens - res.outputTokens)
             : tokens
-          console.log(res, newAmountOfTokens)
           
           if (newAmountOfTokens !== tokens) {
             await db

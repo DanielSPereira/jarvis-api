@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">53.19% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>47/47</span>
+                <span class='fraction'>25/47</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">53.19% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>47/47</span>
+                <span class='fraction'>25/47</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -142,34 +142,34 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span></td><td class="text"><pre class="prettyprint lang-js">import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod"
 import { users } from "../../database/schema.ts"
@@ -196,34 +196,34 @@ export const loginRoute: FastifyPluginAsyncZod  = async (server) =&gt; {
       }
     }, 
     async (request, reply) =&gt; {    
-      const { email } = request.body
+<span class="cstat-no" title="statement not covered" >      const { email } = request.body</span>
 &nbsp;
-      const result = await db
-        .select()
-        .from(users)
-        .where(eq(users.email, email))
+<span class="cstat-no" title="statement not covered" >      const result = await db</span>
+<span class="cstat-no" title="statement not covered" >        .select()</span>
+<span class="cstat-no" title="statement not covered" >        .from(users)</span>
+<span class="cstat-no" title="statement not covered" >        .where(eq(users.email, email))</span>
 &nbsp;
-      if (result.length === 0) {
-        return reply.status(401).send({ message: 'invalid credentials' })
-      }
+<span class="cstat-no" title="statement not covered" >      if (result.length === 0) {</span>
+<span class="cstat-no" title="statement not covered" >        return reply.status(401).send({ message: 'invalid credentials' })</span>
+<span class="cstat-no" title="statement not covered" >      }</span>
 &nbsp;
-      const user = result[0]
+<span class="cstat-no" title="statement not covered" >      const user = result[0]</span>
 &nbsp;
-      const token = createJWT({ sub: user.id })
+<span class="cstat-no" title="statement not covered" >      const token = createJWT({ sub: user.id })</span>
 &nbsp;
-      try {
-        await sendEmail({
-          from: env.SMTP_USER,
-          to: user.email,
-          subject: 'You authentication on Jarvis',
-          content: token
-        })
-      } catch {
-        return reply.status(500).send({ message: 'we could not finish the operation' })
-      }
+<span class="cstat-no" title="statement not covered" >      try {</span>
+<span class="cstat-no" title="statement not covered" >        await sendEmail({</span>
+<span class="cstat-no" title="statement not covered" >          from: env.SMTP_USER,</span>
+<span class="cstat-no" title="statement not covered" >          to: user.email,</span>
+<span class="cstat-no" title="statement not covered" >          subject: 'You authentication on Jarvis',</span>
+<span class="cstat-no" title="statement not covered" >          content: token</span>
+<span class="cstat-no" title="statement not covered" >        })</span>
+<span class="cstat-no" title="statement not covered" >      } catch {</span>
+<span class="cstat-no" title="statement not covered" >        return reply.status(500).send({ message: 'we could not finish the operation' })</span>
+<span class="cstat-no" title="statement not covered" >      }</span>
           
-      return reply.status(201).send({ message: 'an authentication link was sent to your email' })
-    }
+<span class="cstat-no" title="statement not covered" >      return reply.status(201).send({ message: 'an authentication link was sent to your email' })</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
   )
 }</pre></td></tr></table></pre>
 
@@ -232,7 +232,7 @@ export const loginRoute: FastifyPluginAsyncZod  = async (server) =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-09T21:02:29.109Z
+                at 2025-09-09T21:45:57.146Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

@@ -19,7 +19,7 @@ test('login sends authentication link via email successfully when existent email
 
   const response = await request(server.server)
     .post(`/sessions`)
-    .set('Contente-Type', 'application/json')
+    .set('Content-Type', 'application/json')
     .send({ email: user.email })
 
   expect(response.status).toEqual(201)
@@ -33,7 +33,7 @@ test('login returns 401 if non existent email is passed', async () => {
 
   const response = await request(server.server)
     .post(`/sessions`)
-    .set('Contente-Type', 'application/json')
+    .set('Content-Type', 'application/json')
     .send({ email: 'test@gmail.com' })
 
   expect(response.status).toEqual(401)
@@ -55,7 +55,7 @@ test('login returns 500 if sendEmail function throws an error', async () => {
 
   const response = await request(server.server)
     .post(`/sessions`)
-    .set('Contente-Type', 'application/json')
+    .set('Content-Type', 'application/json')
     .send({ email: user.email })
 
   expect(response.status).toEqual(500)

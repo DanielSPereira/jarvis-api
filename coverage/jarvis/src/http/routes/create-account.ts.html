@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">51.85% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>54/54</span>
+                <span class='fraction'>28/54</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">51.85% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>54/54</span>
+                <span class='fraction'>28/54</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -153,39 +153,39 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span></td><td class="text"><pre class="prettyprint lang-js">import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod"
 import { users } from "../../database/schema.ts"
@@ -215,39 +215,39 @@ export const createAccountRoute: FastifyPluginAsyncZod  = async (server) =&gt; {
       }
     }, 
     async (request, reply) =&gt; {    
-      const { email, name } = request.body
+<span class="cstat-no" title="statement not covered" >      const { email, name } = request.body</span>
       
-      const existentUser = await db
-        .select()
-        .from(users)
-        .where(eq(users.email, email))
+<span class="cstat-no" title="statement not covered" >      const existentUser = await db</span>
+<span class="cstat-no" title="statement not covered" >        .select()</span>
+<span class="cstat-no" title="statement not covered" >        .from(users)</span>
+<span class="cstat-no" title="statement not covered" >        .where(eq(users.email, email))</span>
 &nbsp;
-      if (existentUser.length &gt; 0) {
-        return reply.status(409).send({ message: 'account already exists' })
-      }
+<span class="cstat-no" title="statement not covered" >      if (existentUser.length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >        return reply.status(409).send({ message: 'account already exists' })</span>
+<span class="cstat-no" title="statement not covered" >      }</span>
 &nbsp;
-      const result = await db
-        .insert(users)
-        .values({ email,  name })
-        .returning()
+<span class="cstat-no" title="statement not covered" >      const result = await db</span>
+<span class="cstat-no" title="statement not covered" >        .insert(users)</span>
+<span class="cstat-no" title="statement not covered" >        .values({ email,  name })</span>
+<span class="cstat-no" title="statement not covered" >        .returning()</span>
 &nbsp;
-      const newUser = result[0]
+<span class="cstat-no" title="statement not covered" >      const newUser = result[0]</span>
 &nbsp;
-      const token = createJWT({ sub: newUser.id })
+<span class="cstat-no" title="statement not covered" >      const token = createJWT({ sub: newUser.id })</span>
 &nbsp;
-      try {
-        await sendEmail({
-          from: env.SMTP_USER,
-          to: newUser.email,
-          subject: 'You authentication on Jarvis',
-          content: token
-        })
-      } catch {
-        return reply.status(500).send({ message: 'we could not finish the operation. Try login' })
-      }
+<span class="cstat-no" title="statement not covered" >      try {</span>
+<span class="cstat-no" title="statement not covered" >        await sendEmail({</span>
+<span class="cstat-no" title="statement not covered" >          from: env.SMTP_USER,</span>
+<span class="cstat-no" title="statement not covered" >          to: newUser.email,</span>
+<span class="cstat-no" title="statement not covered" >          subject: 'You authentication on Jarvis',</span>
+<span class="cstat-no" title="statement not covered" >          content: token</span>
+<span class="cstat-no" title="statement not covered" >        })</span>
+<span class="cstat-no" title="statement not covered" >      } catch {</span>
+<span class="cstat-no" title="statement not covered" >        return reply.status(500).send({ message: 'we could not finish the operation. Try login' })</span>
+<span class="cstat-no" title="statement not covered" >      }</span>
           
-      return reply.status(201).send({ message: 'an authentication link was sent to your email' })
-    }
+<span class="cstat-no" title="statement not covered" >      return reply.status(201).send({ message: 'an authentication link was sent to your email' })</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
   )
 }</pre></td></tr></table></pre>
 
@@ -256,7 +256,7 @@ export const createAccountRoute: FastifyPluginAsyncZod  = async (server) =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-09T21:02:29.109Z
+                at 2025-09-09T21:45:57.146Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
