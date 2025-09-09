@@ -1,0 +1,25 @@
+### login
+POST http://localhost:3333/sessions
+Content-Type: application/json
+
+{
+  "email": "danielsampaio.dev@gmail.com"
+}
+
+### create account
+POST http://localhost:3333/accounts
+Content-Type: application/json
+
+{
+  "email": "danielsampaio.dev@gmail.com",
+  "name": "Daniel Sampaio"
+}
+
+### ask-ai
+POST http://localhost:3333/ask-ai
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNTVhYjE3Mi02NDgyLTQyNDYtOTJmYS02NjE2YjdhYjZhYTMiLCJpYXQiOjE3NTczNDg5NzcsImV4cCI6MTc1NzQzNTM3N30.SDyOYXGD4PN274Uo2KO-GyiXT7yxg5k_oEgL4LsL2N4
+
+{
+  "question": "pode gerar pra mim um relatorio ficticio bem grande com o máximo de tokens"
+}
