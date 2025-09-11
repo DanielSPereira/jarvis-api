@@ -23,3 +23,13 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNTVhYjE3Mi02NDgy
 {
   "question": "oi"
 }
+
+### create checkout
+POST http://localhost:3333/checkout
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNTVhYjE3Mi02NDgyLTQyNDYtOTJmYS02NjE2YjdhYjZhYTMiLCJpYXQiOjE3NTc1NjAxMzcsImV4cCI6MTc1NzY0NjUzN30.9gEW6HT4SM5Fcj6NP0CsEtJDLU0lPTGYwCzrkzc31Qw
+
+
+{
+  "priceId": "price_1S5AyLDYLRFg5faysqHgDFWp"
+}

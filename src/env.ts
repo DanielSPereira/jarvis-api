@@ -6,7 +6,9 @@ const envSchema = z.object({
   SMTP_PASS: z.string(),
   SMTP_USER: z.string(),
   DATABASE_URL: z.string(),
-  GOOGLE_API_KEY: z.string()
+  GOOGLE_API_KEY: z.string(),
+  STRIPE_SECRET_KEY: z.string(),
+  STRIPE_WEBHOOK_SIGNATURE_SECRET: z.string()
 })
 
 export const env = envSchema.parse(process.env)

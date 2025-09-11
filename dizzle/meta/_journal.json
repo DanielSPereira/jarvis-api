@@ -15,6 +15,13 @@
       "when": 1757345279812,
       "tag": "0001_mysterious_captain_cross",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1757467493184,
+      "tag": "0002_tired_george_stacy",
+      "breakpoints": true
     }
   ]
 }

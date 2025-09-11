@@ -6,6 +6,9 @@ import fastify from "fastify";
 import { loginRoute } from "./routes/login.ts";
 import { createAccountRoute } from "./routes/create-account.ts";
 import { askAiRoute } from "./routes/ask-ai.ts";
+import { stripeWebhookEventsRoute } from "./routes/stripe-webhook-events.ts";
+import fastifyRawBody from "fastify-raw-body";
+import { createCheckoutRoute } from "./routes/create-checkout.ts";
 
 const server = fastify({ 
   logger: {
@@ -18,6 +21,15 @@ const server = fastify({
     }
   } 
 }).withTypeProvider<ZodTypeProvider>()
+
+server.register(fastifyRawBody, {
+  field: 'rawBody',
+  global: false,
+  encoding: 'utf8',
+  runFirst: true,
+  routes: [],
+  jsonContentTypes: [],
+})
 
 
 if (env.NODE_ENV === 'development') {
@@ -46,6 +58,8 @@ server.setSerializerCompiler(serializerCompiler)
 server.register(loginRoute)
 server.register(createAccountRoute)
 server.register(askAiRoute)
+server.register(stripeWebhookEventsRoute)
+server.register(createCheckoutRoute)
 
 
 export { server }
