@@ -6,7 +6,6 @@ import { eq } from "drizzle-orm"
 import { createJWT } from "../../services/create-jwt.ts"
 import { sendEmail } from "../../services/send-email.ts"
 import { env } from "../../env.ts"
-import { stripe } from "../../services/stripe-client.ts"
 
 export const createAccountRoute: FastifyPluginAsyncZod  = async (server) => {
   server.post(
