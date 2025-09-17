@@ -1,50 +1,71 @@
 import { db } from "./client.ts"
-import { users } from "./schema.ts"
+import { transactions, users } from "./schema.ts"
 import { faker } from "@faker-js/faker"
-import { hash } from 'argon2'
+
+function getRandomArrayValue<T>(arr: T[]): T {
+  if (!arr.length) {
+    throw new Error("Array is empty");
+  }
+  const randomIndex = Math.floor(Math.random() * arr.length);
+  return arr[randomIndex];
+}
 
 
 async function seed() {
-  // const passwordHash = await hash('12345')
-  // const usersInsert = await db
-  //   .insert(users)
-  //   .values([
-  //     { 
-  //       name: faker.person.firstName(), 
-  //       email: faker.internet.email(),
-  //       role: 'student',
-  //       password: passwordHash
-  //     },
-  //     { 
-  //       name: faker.person.firstName(), 
-  //       email: faker.internet.email(),
-  //       role: 'student',
-  //       password: passwordHash
-  //     },
-  //     { 
-  //       name: faker.person.firstName(), 
-  //       email: faker.internet.email(),
-  //       role: 'student',
-  //       password: passwordHash
-  //     },
-  //   ])
-  //   .returning()
+  const usersInsert = await db
+    .insert(users)
+    .values([
+      { 
+        name: faker.person.firstName(), 
+        email: faker.internet.email(),
+        tokens: faker.number.int({ max: 50000, min: 30000 })
+      },
+    ])
+    .returning()
 
-  // const coursesInsert = await db
-  //   .insert(courses)
-  //   .values([
-  //     { title: faker.lorem.word(3), description: faker.lorem.lines(1) },
-  //     { title: faker.lorem.word(3), description: faker.lorem.lines(1) }
-  //   ])
-  //   .returning()
-  
-  // await db
-  //   .insert(enrollments)
-  //   .values([
-  //     { userId: usersInsert[0].id, courseId: coursesInsert[0].id },
-  //     { userId: usersInsert[1].id, courseId: coursesInsert[0].id },
-  //     { userId: usersInsert[2].id, courseId: coursesInsert[1].id }
-  //   ])
+  await db
+    .insert(transactions)
+    .values([
+      { 
+        amount: Number(faker.finance.amount({ min: -1000, max: 1000 })), 
+        description: faker.finance.transactionDescription(),
+        date: faker.date.between({ 
+          from: new Date(Date.now() - 1000 * 60 * 60 * 24 * 30 * 3), // 3 months ago
+          to: new Date()
+        }),
+        type: getRandomArrayValue<'CREDIT' | 'DEBIT'>(['CREDIT', 'DEBIT']),
+        status: getRandomArrayValue<'PENDING' | 'POSTED'>(['PENDING', 'POSTED']),
+        userId: usersInsert[0].id,
+        category: 'temporary missing',
+        operationType: null,
+      },
+      { 
+        amount: Number(faker.finance.amount({ min: -1000, max: 1000 })), 
+        description: faker.finance.transactionDescription(),
+        date: faker.date.between({ 
+          from: new Date(Date.now() - 1000 * 60 * 60 * 24 * 30 * 3), // 3 months ago
+          to: new Date()
+        }),
+        type: getRandomArrayValue<'CREDIT' | 'DEBIT'>(['CREDIT', 'DEBIT']),
+        status: getRandomArrayValue<'PENDING' | 'POSTED'>(['PENDING', 'POSTED']),
+        userId: usersInsert[0].id,
+        category: 'temporary missing',
+        operationType: null,
+      },
+      { 
+        amount: Number(faker.finance.amount({ min: -1000, max: 1000 })), 
+        description: faker.finance.transactionDescription(),
+        date: faker.date.between({ 
+          from: new Date(Date.now() - 1000 * 60 * 60 * 24 * 30 * 3), // 3 months ago
+          to: new Date()
+        }),
+        type: getRandomArrayValue<'CREDIT' | 'DEBIT'>(['CREDIT', 'DEBIT']),
+        status: getRandomArrayValue<'PENDING' | 'POSTED'>(['PENDING', 'POSTED']),
+        userId: usersInsert[0].id,
+        category: 'temporary missing',
+        operationType: null,
+      },
+    ])    
 }
 
 seed()
