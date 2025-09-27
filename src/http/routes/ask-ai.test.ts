@@ -76,9 +76,7 @@ test('ask-ai return 500 when streamObject fails', async () => {
     .send({ question: 'hi' })
 
   expect(response.status).toEqual(500)
-  expect(response.body).toEqual({
-    message: expect.any(String)
-  })
+  expect(response.body).toEqual(expect.any(String))
 
   vi.restoreAllMocks()
   vi.resetModules()

@@ -1,5 +1,5 @@
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
-import { streamObject, streamText } from "ai";
+import { stepCountIs, streamObject, streamText, tool } from "ai";
 import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
 import z from "zod";
 import { db } from "../../database/client.ts";
@@ -8,6 +8,7 @@ import { checkRequestJWT } from "./hooks/check-request-jwt.ts";
 import { eq } from "drizzle-orm";
 import { getAuthenticatedUserFromRequest } from "../../utils/get-authenticated-user-from-request.ts";
 import { env } from "../../env.ts";
+import { getTransactions } from "../../ai/get-transactions.ts";
 
 const google = createGoogleGenerativeAI({
   apiKey: env.GOOGLE_API_KEY,
@@ -32,8 +33,11 @@ const basePrompt = `
   Always:  
     - Format dates in Portuguese (Brazil) style (DD/MM/YYYY).  
     - Answer in Brazilian Portuguese.  
-    - Format the response in Markdown.  
+    - Format the response in Markdown.
     - Take as reference the current data.
+
+  User Id:
+  {userId}
 
   Current Date:  
   {date} 
@@ -54,13 +58,9 @@ export const askAiRoute: FastifyPluginAsyncZod  = async (server) => {
     } 
   },
   async (request, reply) => {
-    const question = request.body.question
-    
-    const prompt = basePrompt
-      .replace('{question}', question)
-      .replace('{date}', new Date().toISOString())
-
     const user = getAuthenticatedUserFromRequest(request)
+
+    const question = request.body.question
 
     const [{ tokens }] = await db
       .select({ tokens: users.tokens })
@@ -72,16 +72,19 @@ export const askAiRoute: FastifyPluginAsyncZod  = async (server) => {
         .status(200)
         .send({ message: 'you do not have any more tokens left' })
     }
+
+    const prompt = basePrompt
+      .replace('{userId}', user.sub)
+      .replace('{question}', question)
+      .replace('{date}', new Date().toISOString())
     
     try {
-      const result = streamObject({
+      const result = streamText({
         model: google('gemini-2.0-flash-001'),
         system,
         prompt,
-        schema: z.object({
-          answer: z.string()
-        }),
-        maxOutputTokens: tokens
+        tools: { getTransactions },
+        stopWhen: stepCountIs(5)
       });
 
       result.usage
@@ -99,7 +102,8 @@ export const askAiRoute: FastifyPluginAsyncZod  = async (server) => {
         })
 
         return reply
-          .send(result.toTextStreamResponse({ status: 201 }))
+          .header('Content-Type', 'text/plain; charset=utf-8')
+          .send(result.textStream);
     } catch {
       return reply
         .status(500)

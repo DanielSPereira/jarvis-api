@@ -3,7 +3,7 @@ POST http://localhost:3333/sessions
 Content-Type: application/json
 
 {
-  "email": "danielsampaio.dev@gmail.com"
+  "email": "Leon72@hotmail.com"
 }
 
 ### create account
@@ -18,10 +18,10 @@ Content-Type: application/json
 ### ask-ai
 POST http://localhost:3333/ask-ai
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNTVhYjE3Mi02NDgyLTQyNDYtOTJmYS02NjE2YjdhYjZhYTMiLCJpYXQiOjE3NTc0NTI1MjMsImV4cCI6MTc1NzUzODkyM30.uAc9pUShsk4xRI4EK2R9m8nD4gj8E7CqDBY75yclI-k
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MmY2ZmUxYy0xODJhLTRmOWQtYjkxNy1mODE4Y2MyNDg0MzkiLCJpYXQiOjE3NTg5MTczMDMsImV4cCI6MTc1OTAwMzcwM30.0QksV9AfwgLkkyhhQKp6PFYx4huFQloMXVHcXPoAqUg
 
 {
-  "question": "oi"
+  "question": "mostre minhas transacoes"
 }
 
 ### create checkout
