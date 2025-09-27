@@ -8,6 +8,12 @@ export const users = pgTable('users', {
   tokens: integer().notNull().default(0)
 })
 
+export const items = pgTable('items', {
+  id: uuid().primaryKey().defaultRandom(),
+  userId: uuid().notNull().references(() => users.id),
+  itemId: text().notNull()
+})
+
 export const transactions = pgTable('transactions', {
   id: uuid().primaryKey().defaultRandom(),
   userId: uuid().notNull().references(() => users.id),
